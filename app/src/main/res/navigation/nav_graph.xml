@@ -22,5 +22,9 @@
         android:id="@+id/resultScreenFragment"
         android:name="com.mahmoudbashir.edamamapp.ResultScreenFragment"
         android:label="fragment_result_screen"
-        tools:layout="@layout/fragment_result_screen" />
+        tools:layout="@layout/fragment_result_screen" >
+        <argument
+            android:name="analysisData"
+            app:argType="com.mahmoudbashir.edamamapp.pojo.AnalysisResponseModel" />
+    </fragment>
 </navigation>

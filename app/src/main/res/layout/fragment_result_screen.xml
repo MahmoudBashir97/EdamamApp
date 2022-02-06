@@ -121,17 +121,17 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/quantity"
+        android:id="@+id/txt_fat_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1.1g"
-        android:textSize="17sp"
-        android:textColor="@color/black"
-        android:textStyle="normal"
-        android:layout_toRightOf="@+id/total_txt"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/total_txt"
+        android:text="1.1g"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="normal" />
 
     <TextView
         android:id="@+id/txt_fat_daily_value"
@@ -191,7 +191,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:text="2 %"
+        android:text="2%"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -270,7 +270,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:text="2 %"
+        android:text="2%"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -324,7 +324,7 @@
         android:text="2%"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="normal" />
+        android:textStyle="bold" />
    </RelativeLayout>
 
 

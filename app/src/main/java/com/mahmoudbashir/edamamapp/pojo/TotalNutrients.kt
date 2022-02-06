@@ -1,14 +1,16 @@
 package com.mahmoudbashir.edamamapp.pojo
 
+import java.io.Serializable
+
 data class TotalNutrients(
     val CA: CAX,
     val CHOCDF: CHOCDFX,
-    val CHOLE: CHOLEX,
+    val CHOLE: CHOLEX?,
     val ENERC_KCAL: ENERCKCALX,
     val FAMS: FAMS,
     val FAPU: FAPU,
-    val FASAT: FASATX,
-    val FAT: FATX,
+    val FASAT: FASATX?,
+    val FAT: FATX?,
     val FE: FEX,
     val FIBTG: FIBTGX,
     val FOLAC: FOLAC,
@@ -16,7 +18,7 @@ data class TotalNutrients(
     val FOLFD: FOLFD,
     val K: KX,
     val MG: MGX,
-    val NA: NAX,
+    val NA: NAX?,
     val NIA: NIAX,
     val P: PX,
     val PROCNT: PROCNTX,
@@ -32,4 +34,4 @@ data class TotalNutrients(
     val VITK1: VITK1X,
     val WATER: WATER,
     val ZN: ZNX
-)
+): Serializable

@@ -1,32 +1,26 @@
 package com.mahmoudbashir.edamamapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.navArgs
+import com.mahmoudbashir.edamamapp.databinding.FragmentResultScreenBinding
+import com.mahmoudbashir.edamamapp.pojo.AnalysisResponseModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ResultScreenFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ResultScreenFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    lateinit var resultBinding:FragmentResultScreenBinding
+    val args:ResultScreenFragmentArgs by navArgs()
+    lateinit var analysisResult : AnalysisResponseModel
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        analysisResult = args.analysisData
     }
 
     override fun onCreateView(
@@ -34,26 +28,52 @@ class ResultScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_result_screen, container, false)
+        resultBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_result_screen, container, false)
+
+        return resultBinding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ResultScreenFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ResultScreenFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setUpDataToViews()
     }
+
+    //todo attaching data to views
+    private fun setUpDataToViews() {
+
+
+        val fat = if (analysisResult.totalDaily.FAT != null){ "${analysisResult.totalDaily.FAT!!.quantity.toString().substring(0,3)} ${analysisResult.totalDaily.FAT!!.unit}"} else "0 g"
+        val fatQuantity = if (analysisResult.totalNutrients.FAT != null) {"${analysisResult.totalNutrients.FAT!!.quantity.toString().substring(0,3)} ${analysisResult.totalNutrients.FAT!!.unit}"} else "0 %"
+
+        val saturatedQFat = if(analysisResult.totalNutrients.FASAT != null) {"${analysisResult.totalNutrients.FASAT!!.quantity.toString().substring(0,3)} ${analysisResult.totalNutrients.FASAT!!.unit}"} else "0 g"
+        val saturatedDailyValue = if(analysisResult.totalDaily.FASAT != null) {"${analysisResult.totalDaily.FASAT!!.quantity.toString().substring(0,3)} ${analysisResult.totalDaily.FASAT!!.unit}"} else "0 %"
+
+        val choleQ = if (analysisResult.totalNutrients.CHOLE != null) {"${analysisResult.totalNutrients.CHOLE!!.quantity} ${analysisResult.totalNutrients.CHOLE!!.unit}"} else "0 mg"
+        val choleDailyValue = if (analysisResult.totalDaily.CHOLE != null) {"${analysisResult.totalDaily.CHOLE!!.quantity} ${analysisResult.totalDaily.CHOLE!!.unit}"} else "0 %"
+
+
+        val sodiumQ = if (analysisResult.totalNutrients.NA != null) {"${analysisResult.totalNutrients.NA!!.quantity.toString().substring(0,3)} ${analysisResult.totalNutrients.NA!!.unit}"} else "0 g"
+        val sodiumDailyValue = if (analysisResult.totalDaily.NA != null) {"${analysisResult.totalDaily.NA!!.quantity.toString().substring(0,3)} ${analysisResult.totalDaily.NA!!.unit}"} else "0 %"
+
+
+        resultBinding.apply {
+
+            txtCaloriesNo.text = analysisResult.calories.toString()
+
+            txtFatDailyValue.text = fat
+            txtFatQuantity.text = fatQuantity
+
+            quantitySaturatedTxt.text= saturatedQFat
+            txtSaturatedDailyValue.text = saturatedDailyValue
+
+            quantityCholMgTxt.text = choleQ
+            txtCholDailyValue.text = choleDailyValue
+
+            quantitySodiumTxt.text = sodiumQ
+            txtSodiumDailyValue.text = sodiumDailyValue
+        }
+
+    }
+
 }

@@ -47,17 +47,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"/>
 
-                <Button
-                    android:id="@+id/new_recipe_btn"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:text="New recipe"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"
-                    android:background="@drawable/btns_disabled_back"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"/>
             </LinearLayout>
 
             <ProgressBar

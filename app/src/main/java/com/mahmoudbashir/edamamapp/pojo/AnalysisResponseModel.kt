@@ -1,5 +1,7 @@
 package com.mahmoudbashir.edamamapp.pojo
 
+import java.io.Serializable
+
 data class AnalysisResponseModel(
     val calories: Int,
     val cautions: List<String>,
@@ -10,4 +12,4 @@ data class AnalysisResponseModel(
     val totalNutrientsKCal: TotalNutrientsKCal,
     val totalWeight: Int,
     val uri: String
-)
+):Serializable

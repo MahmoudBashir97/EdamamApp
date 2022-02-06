@@ -1,18 +1,20 @@
 package com.mahmoudbashir.edamamapp.pojo
 
+import java.io.Serializable
+
 data class TotalDaily(
     val CA: CA,
     val CHOCDF: CHOCDF,
-    val CHOLE: CHOLE,
+    val CHOLE: CHOLE?,
     val ENERC_KCAL: ENERCKCAL,
-    val FASAT: FASAT,
-    val FAT: FAT,
+    val FASAT: FASAT?,
+    val FAT: FAT?,
     val FE: FE,
     val FIBTG: FIBTG,
     val FOLDFE: FOLDFE,
     val K: K,
     val MG: MG,
-    val NA: NA,
+    val NA: NA?,
     val NIA: NIA,
     val P: P,
     val PROCNT: PROCNT,
@@ -26,4 +28,4 @@ data class TotalDaily(
     val VITD: VITD,
     val VITK1: VITK1,
     val ZN: ZN
-)
+): Serializable

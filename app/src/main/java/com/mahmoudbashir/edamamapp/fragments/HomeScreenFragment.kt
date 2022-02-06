@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.mahmoudbashir.edamamapp.R
 import com.mahmoudbashir.edamamapp.databinding.FragmentHomeScreenBinding
+import com.mahmoudbashir.edamamapp.pojo.AnalysisResponseModel
 import com.mahmoudbashir.edamamapp.viewModel.AnalysisViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -22,6 +24,7 @@ class HomeScreenFragment : Fragment() {
      private val TAG = "HomeScreenFragment"
      lateinit var homeScreenBinding: FragmentHomeScreenBinding
      val viewModel by inject<AnalysisViewModel>()
+     var isEnabled= false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,13 +33,16 @@ class HomeScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         homeScreenBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_home_screen, container, false)
 
-
         return homeScreenBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+       getDataAnalysis()
+    }
+
+    private fun getDataAnalysis() {
         homeScreenBinding.analysisBtn.setOnClickListener {
             homeScreenBinding.isLoading = true
             if (checkValidate()){
@@ -45,8 +51,8 @@ class HomeScreenFragment : Fragment() {
                 observingOnResponseData()
             }
         }
-
     }
+
 
     private fun checkValidate():Boolean{
         if (TextUtils.isEmpty(homeScreenBinding.edtQuery.text.toString())){
@@ -62,11 +68,16 @@ class HomeScreenFragment : Fragment() {
         viewModel.analysisResult.observe(viewLifecycleOwner,{
             result ->
             if (result != null){
+                isEnabled = true
                 Log.d(TAG,"ResultResponse : success")
-                homeScreenBinding.newRecipeBtn.setBackgroundResource(R.drawable.btns_back)
+
                 homeScreenBinding.isLoading = false
+                navigateToResultScreen(result)
             }
         })
     }
 
+    private fun navigateToResultScreen(result: AnalysisResponseModel) {
+        findNavController().navigate(HomeScreenFragmentDirections.actionHomeScreenFragmentToResultScreenFragment(result))
+    }
 }
