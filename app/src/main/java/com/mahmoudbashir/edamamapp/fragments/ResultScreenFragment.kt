@@ -1,4 +1,4 @@
-package com.mahmoudbashir.edamamapp
+package com.mahmoudbashir.edamamapp.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
+import com.mahmoudbashir.edamamapp.R
 import com.mahmoudbashir.edamamapp.databinding.FragmentResultScreenBinding
 import com.mahmoudbashir.edamamapp.pojo.AnalysisResponseModel
 
@@ -28,7 +29,8 @@ class ResultScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        resultBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_result_screen, container, false)
+        resultBinding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_result_screen, container, false)
 
         return resultBinding.root
     }

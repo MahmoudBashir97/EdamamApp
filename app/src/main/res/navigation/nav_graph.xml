@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultScreenFragment"
-        android:name="com.mahmoudbashir.edamamapp.ResultScreenFragment"
+        android:name="com.mahmoudbashir.edamamapp.fragments.ResultScreenFragment"
         android:label="fragment_result_screen"
         tools:layout="@layout/fragment_result_screen" >
         <argument
