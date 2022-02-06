@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/EdamamTaskApp/app/src/main/res/drawable/btns_back.xml" value="0.20260416666666667" />
+        <entry key="..\:/Android/EdamamTaskApp/app/src/main/res/drawable/btns_disabled_back.xml" value="0.20260416666666667" />
         <entry key="..\:/Android/EdamamTaskApp/app/src/main/res/drawable/query_edittext_back.xml" value="0.20260416666666667" />
+        <entry key="..\:/Android/EdamamTaskApp/app/src/main/res/drawable/result_back.xml" value="0.20260416666666667" />
+        <entry key="..\:/Android/EdamamTaskApp/app/src/main/res/layout/activity_main.xml" value="0.18645833333333334" />
         <entry key="..\:/Android/EdamamTaskApp/app/src/main/res/layout/fragment_home_screen.xml" value="0.18645833333333334" />
+        <entry key="..\:/Android/EdamamTaskApp/app/src/main/res/layout/fragment_result_screen.xml" value="0.25" />
       </map>
     </option>
   </component>

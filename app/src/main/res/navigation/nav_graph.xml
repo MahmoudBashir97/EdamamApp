@@ -7,7 +7,20 @@
 
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.mahmoudbashir.edamamapp.HomeScreenFragment"
+        android:name="com.mahmoudbashir.edamamapp.fragments.HomeScreenFragment"
         android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_resultScreenFragment"
+            app:destination="@id/resultScreenFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultScreenFragment"
+        android:name="com.mahmoudbashir.edamamapp.ResultScreenFragment"
+        android:label="fragment_result_screen"
+        tools:layout="@layout/fragment_result_screen" />
 </navigation>
